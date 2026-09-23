@@ -1,0 +1,3 @@
+- Regra nomes de variáveis para camelCase
+- Adicionado palavras a variáveis aceitáveis
+- Adicionado palavras a variaveis inaceitáveis

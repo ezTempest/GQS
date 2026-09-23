@@ -1,14 +1,5 @@
-"""Sistema de Cadastro de Pessoas - versão 2."""
-
-nomes = []
-idades = []
-emails = []
-
-qtd = 0
-op = 0
-
-
 def exibir_menu():
+    """Exibe o menu principal do sistema."""
     print("=========================")
     print(" CADASTRO DE PESSOAS")
     print("=========================")
@@ -21,6 +12,7 @@ def exibir_menu():
 
 
 def cadastrar_pessoa(nomes, idades, emails):
+    """Cadastra uma nova pessoa no sistema."""
     global qtd
 
     if qtd >= 3:
@@ -50,12 +42,13 @@ def cadastrar_pessoa(nomes, idades, emails):
 
 
 def consultar_pessoa(nomes, idades, emails):
-    nome_busca = input("Digite o nome para consultar: ")
+    """Consulta uma pessoa pelo nome."""
+    nomeBusca = input("Digite o nome para consultar: ")
 
     encontrado = False
 
     for i in range(len(nomes)):
-        if nomes[i].lower() == nome_busca.lower():
+        if nomes[i].lower() == nomeBusca.lower():
             print("-------------------------")
             print("Nome:", nomes[i])
             print("Idade:", idades[i])
@@ -68,25 +61,26 @@ def consultar_pessoa(nomes, idades, emails):
 
 
 def alterar_pessoa(nomes, idades, emails):
-    nome_busca = input("Digite o nome da pessoa: ")
+    """Altera os dados de uma pessoa cadastrada."""
+    nomeBusca = input("Digite o nome da pessoa: ")
 
     for i in range(len(nomes)):
-        if nomes[i].lower() == nome_busca.lower():
+        if nomes[i].lower() == nomeBusca.lower():
             print("Pessoa encontrada.")
 
-            novo_nome = input("Novo nome: ")
+            novoNome = input("Novo nome: ")
 
             try:
-                nova_idade = int(input("Nova idade: "))
+                novaIdade = int(input("Nova idade: "))
             except ValueError:
                 print("Idade inválida.")
                 return
 
-            novo_email = input("Novo e-mail: ")
+            novoEmail = input("Novo e-mail: ")
 
-            nomes[i] = novo_nome
-            idades[i] = nova_idade
-            emails[i] = novo_email
+            nomes[i] = novoNome
+            idades[i] = novaIdade
+            emails[i] = novoEmail
 
             print("Dados alterados com sucesso.")
             return
@@ -95,6 +89,7 @@ def alterar_pessoa(nomes, idades, emails):
 
 
 def listar_pessoas(nomes, idades, emails):
+    """Lista todas as pessoas cadastradas."""
     if len(nomes) == 0:
         print("Nenhuma pessoa cadastrada.")
         return
@@ -111,7 +106,8 @@ def listar_pessoas(nomes, idades, emails):
         print("-------------------------")
 
 
-def avaliar_cadastro(nomes, idades, emails):
+def avaliar_cadastro(nomes, idades):
+    """Avalia a quantidade de maiores e menores de idade."""
     if len(nomes) == 0:
         print("Nenhuma pessoa cadastrada.")
         return
@@ -132,33 +128,25 @@ def avaliar_cadastro(nomes, idades, emails):
     print("Maiores de idade:", maiores)
     print("Menores de idade:", menores)
 
-
+nomes = []
+idades = []
+emails = []
+qtd = 0
+op = 0
 while op != 6:
     exibir_menu()
-
-    try:
-        op = int(input("Escolha uma opção: "))
-    except ValueError:
-        print("Digite uma opção válida.")
-        continue
-
+    op = int(input("Escolha uma opcao: "))
     if op == 1:
         cadastrar_pessoa(nomes, idades, emails)
-
     elif op == 2:
         consultar_pessoa(nomes, idades, emails)
-
     elif op == 3:
         alterar_pessoa(nomes, idades, emails)
-
     elif op == 4:
         listar_pessoas(nomes, idades, emails)
-
     elif op == 5:
-        avaliar_cadastro(nomes, idades, emails)
-
+        avaliar_cadastro(nomes, idades)
     elif op == 6:
-        print("Programa encerrado.")
-
-    else:
-        print("Opção inválida.")
+        print("Saindo...")
+    else: print("Opcao invalida")
+print("Fim do programa")
